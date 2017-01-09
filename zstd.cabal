@@ -1,0 +1,100 @@
+name:                zstd
+version:             0.1.0.0
+synopsis:            Haskell bindings to the Zstandard compression algorithm
+description:
+  A fast lossless compression algorithm, targeting real-time
+  compression scenarios at zlib-level and better compression ratios.
+homepage:            https://github.com/facebookexperimental/hs-zstd
+bug-reports:         https://github.com/facebookexperimental/hs-zstd/issues
+license:             BSD3
+license-file:        LICENSE
+author:              Bryan O'Sullivan
+maintainer:          bryano@fb.com
+copyright:           (c) 2016-present, Facebook, Inc. All rights reserved.
+category:            Codec
+build-type:          Simple
+extra-source-files:  CONTRIBUTING.md PATENTS README.md changelog.md
+cabal-version:       >=1.10
+
+library
+  exposed-modules:
+    Codec.Compression.Zstd.Base
+    Codec.Compression.Zstd.Efficient
+    Codec.Compression.Zstd.FFI
+    Codec.Compression.Zstd.Streaming
+    Codec.Compression.Zstd.Types
+    Codec.Compression.Zstd
+    Codec.Compression.Zstd.Lazy
+
+  other-modules:
+    Codec.Compression.Zstd.Base.Types
+    Codec.Compression.Zstd.FFI.Types
+    Codec.Compression.Zstd.Internal
+
+  c-sources:
+    zstd/lib/common/entropy_common.c
+    zstd/lib/common/error_private.c
+    zstd/lib/common/fse_decompress.c
+    zstd/lib/common/xxhash.c
+    zstd/lib/common/zstd_common.c
+    zstd/lib/compress/fse_compress.c
+    zstd/lib/compress/huf_compress.c
+    zstd/lib/compress/zstd_compress.c
+    zstd/lib/decompress/huf_decompress.c
+    zstd/lib/decompress/zstd_decompress.c
+    zstd/lib/dictBuilder/divsufsort.c
+    zstd/lib/dictBuilder/zdict.c
+
+  include-dirs:
+    zstd/lib
+    zstd/lib/common
+    zstd/lib/compress
+    zstd/lib/decompress
+
+  ghc-options: -Wall
+  default-language: Haskell2010
+
+  build-depends:
+    base >= 4.8 && < 5,
+    bytestring >= 0.9,
+    deepseq,
+    ghc-prim
+
+test-suite tests
+  type:           exitcode-stdio-1.0
+  default-language: Haskell2010
+  hs-source-dirs: tests
+  main-is:        Main.hs
+  ghc-options:    -Wall -threaded -rtsopts
+  other-modules:
+    Properties
+    QuickCheckUtils
+
+  build-depends:
+    QuickCheck >= 2.7,
+    base >= 4.8 && < 5,
+    bytestring >= 0.9,
+    test-framework >= 0.4,
+    test-framework-quickcheck2 >= 0.2,
+    zstd
+
+benchmark benchmarks
+  hs-source-dirs:   benchmarks
+  main-is:          Benchmarks.hs
+
+  default-language: Haskell2010
+  type:             exitcode-stdio-1.0
+
+  build-depends:
+    base,
+    bytestring,
+    criterion,
+    ghc-prim,
+    zstd,
+    zlib
+
+  ghc-options: -Wall -O2
+
+source-repository head
+  type:     git
+  location: https://github.com/facebookexperimental//hs-zstd
