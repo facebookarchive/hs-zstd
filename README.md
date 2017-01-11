@@ -27,7 +27,9 @@ The library is structured to provide several layers of abstraction.
 
 ## Join in
 
-
+If you'd like to help improve the code, please
+[read the contribution guidelines](CONTRIBUTING.md).  This discusses
+how to file bugs and submit changes to the code itself.
 
 ## API documentation
 
