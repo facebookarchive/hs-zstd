@@ -43,7 +43,9 @@ module Codec.Compression.Zstd.Efficient
     , decompressDCtx
 
     -- * Dictionary-based compression
-    , Dict(..)
+    , Dict
+    , mkDict
+    , fromDict
     , trainFromSamples
     , getDictID
 
@@ -62,7 +64,7 @@ module Codec.Compression.Zstd.Efficient
     ) where
 
 import Codec.Compression.Zstd.Internal
-import Codec.Compression.Zstd.Types (Decompress(..), Dict(..))
+import Codec.Compression.Zstd.Types (Decompress(..), Dict(..), mkDict)
 import Codec.Compression.Zstd.Base.Types (CDict(..), DDict(..))
 import Data.ByteString.Internal (ByteString(..))
 import Foreign.ForeignPtr (withForeignPtr)

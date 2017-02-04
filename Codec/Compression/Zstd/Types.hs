@@ -23,6 +23,8 @@ module Codec.Compression.Zstd.Types
     (
       Decompress(..)
     , Dict(..)
+    , fromDict
+    , mkDict
     ) where
 
 import Control.DeepSeq (NFData(..))
@@ -43,6 +45,10 @@ data Decompress =
 newtype Dict = Dict {
     fromDict :: ByteString
   } deriving (Eq, Ord)
+
+-- | Smart constructor.
+mkDict :: ByteString -> Dict
+mkDict d = Dict d
 
 instance Show Dict where
     showsPrec n (Dict d) r = showsPrec n d r

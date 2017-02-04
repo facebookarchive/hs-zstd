@@ -19,8 +19,11 @@ extra-source-files:
   PATENTS
   zstd/*.md
   zstd/LICENSE
+  zstd/LICENSE-examples
   zstd/NEWS
   zstd/PATENTS
+  zstd/examples/*.cabal
+  zstd/examples/low-level/*.hs
   zstd/lib/*.h
   zstd/lib/README.md
   zstd/lib/common/*.c

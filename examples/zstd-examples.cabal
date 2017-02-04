@@ -1,0 +1,23 @@
+name:          zstd-examples
+version:       0
+synopsis:      Examples of how to use the zstd library
+description:   Examples of how to use the zstd library
+license:       OtherLicense
+license-file:  ../LICENSE-examples
+author:        Bryan O'Sullivan
+maintainer:    bryano@fb.com
+copyright:     (c) 2016-present, Facebook, Inc. All rights reserved.
+build-type:    Simple
+category:      Codec
+cabal-version: >=1.10
+
+executable low-level-dictionary-compression
+  hs-source-dirs:   low-level
+  ghc-options:      -Wall -fwarn-tabs
+  main-is:          DictionaryCompression.hs
+  default-language: Haskell2010
+  build-depends:
+    base >= 4.8 && < 5,
+    bytestring,
+    filepath,
+    zstd

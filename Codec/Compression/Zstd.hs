@@ -28,7 +28,9 @@ module Codec.Compression.Zstd
     , C.maxCLevel
 
     -- * Dictionary-based compression
-    , Dict(..)
+    , Dict
+    , mkDict
+    , fromDict
     , trainFromSamples
     , getDictID
 
@@ -38,7 +40,7 @@ module Codec.Compression.Zstd
     ) where
 
 import Codec.Compression.Zstd.Internal
-import Codec.Compression.Zstd.Types (Decompress(..), Dict(..))
+import Codec.Compression.Zstd.Types (Decompress(..), Dict(..), mkDict)
 import Data.ByteString.Internal (ByteString(..))
 import System.IO.Unsafe (unsafePerformIO)
 import qualified Codec.Compression.Zstd.FFI as C
