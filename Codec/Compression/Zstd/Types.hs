@@ -23,7 +23,6 @@ module Codec.Compression.Zstd.Types
     (
       Decompress(..)
     , Dict(..)
-    , fromDict
     , mkDict
     ) where
 
