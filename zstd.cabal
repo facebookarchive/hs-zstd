@@ -17,13 +17,13 @@ cabal-version:       >=1.10
 extra-source-files:
   *.md
   PATENTS
+  examples/*.cabal
+  examples/low-level/*.hs
   zstd/*.md
   zstd/LICENSE
   zstd/LICENSE-examples
   zstd/NEWS
   zstd/PATENTS
-  zstd/examples/*.cabal
-  zstd/examples/low-level/*.hs
   zstd/lib/*.h
   zstd/lib/README.md
   zstd/lib/common/*.c
